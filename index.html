@@ -2,6 +2,18 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
+  <script>
+    // Ocultar parametros de seguimiento de ChatGPT sin recargar la pagina.
+    (() => {
+      try {
+        const url = new URL(window.location.href);
+        if (url.searchParams.get("utm_source") === "chatgpt.com") {
+          url.searchParams.delete("utm_source");
+          window.history.replaceState(window.history.state, "", url.pathname + url.search + url.hash);
+        }
+      } catch (_) { /* En archivos locales, conservar la URL sin cambios. */ }
+    })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#08090b" />
   <meta name="description" content="7Dylz — Diseñador GFX y VFX, artista 3D, estudiante de Ingeniería en Informática e Inmortal 3 en VALORANT." />
