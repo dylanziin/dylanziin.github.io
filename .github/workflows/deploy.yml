@@ -1,0 +1,59 @@
+name: Publicar 7Dylz en GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '7Dylz_Web_FINAL_LISTA_PARA_PUBLICAR.zip'
+      - '.github/workflows/deploy.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Publicar portafolio
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Extraer la pagina
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f 7Dylz_Web_FINAL_LISTA_PARA_PUBLICAR.zip || { echo 'Falta subir el ZIP de 7Dylz'; exit 1; }
+          mkdir -p _build
+          unzip -q 7Dylz_Web_FINAL_LISTA_PARA_PUBLICAR.zip -d _build
+          mkdir -p _site
+          cp -a _build/7Dylz_Web_FINAL_PUBLICABLE/. _site/
+          test -s _site/index.html
+          test -s _site/style.css
+          test -s _site/script.js
+          test -s _site/assets/killua-hero.webp
+          test -s _site/assets/project-1.webp
+          test -s _site/assets/project-2.webp
+          test -s _site/assets/project-3.webp
+          test -s _site/assets/project-4.webp
+
+      - name: Preparar Pages
+        uses: actions/configure-pages@v5
+
+      - name: Subir pagina
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Publicar en Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
