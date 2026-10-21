@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#08090b" />
+  <meta name="description" content="7Dylz — Diseñador GFX y VFX, artista 3D, estudiante de Ingeniería en Informática e Inmortal 3 en VALORANT." />
+  <meta property="og:title" content="7Dylz — Portafolio personal" />
+  <meta property="og:description" content="Design / VFX / 3D / Unity / Gaming" />
+  <meta property="og:image" content="assets/social-preview.jpg" />
+  <title>7Dylz — Portafolio personal</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="ambient ambient-a" aria-hidden="true"></div>
+  <div class="ambient ambient-b" aria-hidden="true"></div>
+  <!-- Final animated boot screen. Replayable and skippable. -->
+  <div class="loading" id="loading" role="status" aria-live="polite" aria-label="Initializing 7Dylz portfolio">
+    <div class="loading-content">
+      <div class="boot-title mono"><span>7</span>DYLZ<span class="red">.EXE</span><span class="boot-tag">FINAL</span></div>
+      <div class="boot-console mono" aria-hidden="true">
+        <div class="boot-line"><span class="boot-arrow">&gt;</span> <span data-i18n="bootLine1">connecting to 7dylz.exe...</span> <span class="boot-ok">[ OK ]</span></div>
+        <div class="boot-line"><span class="boot-arrow">&gt;</span> <span data-i18n="bootLine2">loading creative modules...</span> <span class="boot-ok">[ OK ]</span></div>
+        <div class="boot-line"><span class="boot-arrow">&gt;</span> <span data-i18n="bootLine3">launching personal space...</span><span class="boot-caret">_</span></div>
+        <div class="boot-line boot-success"><span class="boot-arrow">&gt;</span> <span data-i18n="bootLine4">systems online. welcome, 7Dylz.</span> <span class="boot-ok">READY</span></div>
+      </div>
+      <div class="loading-track" aria-hidden="true"><div class="loading-fill"></div></div>
+      <div class="boot-footer mono"><span data-i18n="bootStatus">INITIALIZING PROFILE</span><button type="button" class="boot-skip" id="skipIntro" data-i18n="skipIntro" aria-label="Skip introduction">SKIP INTRO ↗</button></div>
+    </div>
+  </div>
+
+  <!-- Cursor final: only activated for mouse/trackpad, ignored on touch and reduced motion. -->
+  <canvas id="cursorTrail" class="cursor-trail" aria-hidden="true"></canvas>
+  <div id="cursorGlow" class="cursor-glow" aria-hidden="true"></div>
+  <div id="cursorRing" class="cursor-ring" aria-hidden="true"><span class="cursor-cross-x"></span><span class="cursor-cross-y"></span></div>
+  <div id="cursorDot" class="cursor-dot" aria-hidden="true"></div>
+  <div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+  <header class="site-header" id="top">
+    <nav class="nav page-wrap" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="7Dylz home"><span>7</span>Dylz<span class="brand-dot">.</span></a>
+      <div class="nav-links" id="navLinks">
+        <a href="#home" class="nav-link active" data-i18n="navHome">Home</a>
+        <a href="#about" class="nav-link" data-i18n="navAbout">About</a>
+        <a href="#projects" class="nav-link" data-i18n="navProjects">Projects</a>
+        <a href="#skills" class="nav-link" data-i18n="navSkills">Skills</a>
+        <a href="#gaming" class="nav-link" data-i18n="navGaming">Gaming</a>
+        <a href="#links" class="nav-link" data-i18n="navLinks">Links</a>
+      </div>
+      <div class="nav-actions">
+        <button type="button" class="effects-toggle mono" id="effectsToggle" aria-pressed="true" aria-label="Desactivar efectos animados"><span class="fx-led"></span><span id="effectsLabel">EFECTOS ON</span></button>
+        <button type="button" class="lang-btn" id="langToggle" title="Switch language" aria-label="Switch language">ES</button>
+        <a href="#links" class="contact-btn"><span class="mono">~/contact</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+        <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero page-wrap" id="home" aria-labelledby="heroTitle">
+      <div class="hero-copy">
+        <div class="statusline mono"><span class="chevron">›</span> ~/profile/7dylz.txt <span class="online"><span class="online-dot"></span> ONLINE</span></div>
+        <p class="eyebrow mono"><span>//</span> PERSONAL PORTFOLIO <span class="vline">/</span> DIGITAL PLAYGROUND</p>
+        <h1 class="hero-title" id="heroTitle" aria-label="7Dylz"><span class="title-char red-seven" aria-hidden="true">7</span><span class="title-char" aria-hidden="true">D</span><span class="title-char" aria-hidden="true">y</span><span class="title-char" aria-hidden="true">l</span><span class="title-char" aria-hidden="true">z</span><span class="blink-cursor" aria-hidden="true">_</span></h1>
+        <div class="roles mono" aria-label="Creative roles">
+          <div><span>//</span> GFX &amp; VFX Designer</div>
+          <div><span>//</span> 3D Artist &amp; Unity Creator</div>
+          <div><span>//</span> <span data-i18n="studentRole">Informatics Engineering Student</span></div>
+        </div>
+        <p class="hero-description" data-i18n="heroDescription">Creative mind, 3D enthusiast and Informatics Engineering student. I love turning ideas into visuals, bringing digital worlds to life and exploring what's possible with technology.</p>
+        <div class="hero-buttons">
+          <a href="#projects" class="btn btn-red"><span data-i18n="viewWork">Explore my work</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h16m-7-7 7 7-7 7"/></svg></a>
+          <a href="#about" class="btn btn-outline"><span data-i18n="moreAbout">Get to know me</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+        </div>
+        <div class="hero-underbar"><div class="hero-manifesto mono">CREATE <i>/</i> EDIT <i>/</i> MODEL <i>/</i> PLAY <i>/</i> REPEAT</div><button type="button" class="replay-intro mono" id="replayIntro" data-i18n="replayIntro" title="Replay intro">↻ REPLAY INTRO</button></div>
+        <div class="hero-scroll mono"><span class="scroll-line"></span> SCROLL TO EXPLORE</div>
+      </div>
+      <div class="hero-visual" id="heroVisual">
+        <div class="orbit orbit-one" aria-hidden="true"></div>
+        <div class="orbit orbit-two" aria-hidden="true"></div>
+        <div class="portrait-frame">
+          <div class="portrait-top mono"><span><span class="top-red">●</span> 7DYLZ / AVATAR</span><span class="red">PROFILE_01</span></div>
+          <img src="assets/killua-hero.webp" alt="Anime-style Killua Zoldyck artwork with red futuristic lighting" class="portrait-image" loading="eager" />
+          <!-- Dynamic Godspeed lightning: canvas renders genuine frame-by-frame energy arcs. -->
+          <canvas class="godspeed-canvas" id="godspeedCanvas" aria-hidden="true"></canvas>
+          <div class="energy-hud mono" aria-hidden="true"><span class="energy-pulse-dot"></span><span>GODSPEED // <b>ACTIVE</b></span><span class="energy-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
+          <!-- Additional HUD traces. -->
+          <svg class="portrait-electric" viewBox="0 0 960 744" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+            <g class="electric-sparks electric-cool">
+              <path class="electric-path e1" d="M245 109 L263 89 L273 109 L302 85 L326 105 L346 73 L365 92 L391 80"/>
+              <path class="electric-path e2" d="M516 74 L528 105 L550 89 L567 128 L593 113 L610 145 L632 139"/>
+              <path class="electric-path e3" d="M623 196 L660 220 L646 241 L678 269 L659 298 L686 319"/>
+              <path class="electric-path e4" d="M302 340 L275 359 L292 377 L263 396 L278 420 L253 447"/>
+            </g>
+            <g class="electric-sparks electric-red">
+              <path class="electric-path e5" d="M198 177 L222 163 L237 184 L269 164 L286 197 L305 189"/>
+              <path class="electric-path e6" d="M545 342 L566 323 L580 353 L611 333 L630 366 L656 358"/>
+              <path class="electric-path e7" d="M330 470 L356 451 L369 477 L391 460 L413 500"/>
+            </g>
+          </svg>
+          <div class="portrait-scan" aria-hidden="true"></div>
+          <div class="portrait-bottom"><span class="mono">KILLUA // HUNTER × HUNTER</span><span class="live-pulse"></span></div>
+          <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+        </div>
+        <div class="float-sticker sticker-upper mono">&lt;CREATIVE_MODE /&gt;<span>ACTIVE</span></div>
+        <div class="float-sticker sticker-lower"><span class="mono red">7DYLZ.EXE</span><span class="mono gray">DESIGN • MODEL • PLAY</span></div>
+        <span class="side-coordinates mono">X:07.03 // Y:17.99</span>
+      </div>
+    </section>
+
+    <div class="section-separator page-wrap"><span>/////</span><span class="mono">SYSTEM MODULES LOADED</span><span>/////</span></div>
+
+    <section class="dashboard page-wrap" aria-label="Personal overview">
+      <article class="panel about-panel scroll-reveal" id="about">
+        <div class="panel-heading"><div class="panel-name"><span class="line-icon">⌁</span><h2 data-i18n="aboutTitle">About me</h2></div><span class="panel-number mono">01 / PROFILE</span></div>
+        <div class="about-body">
+          <span class="tiny-label mono">WHO AM I?</span>
+          <p data-i18n="aboutText">Hey! I'm 7Dylz, a creative who enjoys combining visual design with technology. I work with GFX, VFX and 3D modeling, and I'm currently studying Informatics Engineering. I also love experimenting with Unity, creating interactive experiences and improving my skills with every new project.</p>
+          <div class="about-signature"><span class="hand-signature">7Dylz</span><span class="mono">STILL LEARNING, ALWAYS CREATING</span></div>
+        </div>
+        <div class="panel-footer"><span class="mono">BASED IN CHILE <span class="red">/</span> ONLINE</span><span class="panel-plus">+</span></div>
+      </article>
+
+      <article class="panel skills-panel scroll-reveal" id="skills">
+        <div class="panel-heading"><div class="panel-name"><span class="line-icon">◇</span><h2 data-i18n="skillsTitle">Creative toolkit</h2></div><span class="panel-number mono">02 / SKILLS</span></div>
+        <div class="skills-grid">
+          <div class="skill"><span class="skill-glyph">▧</span><b>GFX</b><small>GRAPHIC DESIGN</small></div>
+          <div class="skill"><span class="skill-glyph">✦</span><b>VFX</b><small>VISUAL EFFECTS</small></div>
+          <div class="skill"><span class="skill-glyph">⬡</span><b>3D</b><small>MODELING</small></div>
+          <div class="skill"><span class="skill-glyph">◈</span><b>UNITY</b><small>INTERACTIVE</small></div>
+          <div class="skill"><span class="skill-glyph">▤</span><b>EDITING</b><small>VIDEO &amp; MOTION</small></div>
+          <div class="skill"><span class="skill-glyph">⌘</span><b>TECH</b><small>INFORMATICS</small></div>
+        </div>
+      </article>
+
+      <div class="dashboard-aside">
+        <article class="panel gaming-panel scroll-reveal" id="gaming">
+          <div class="panel-heading"><div class="panel-name"><span class="line-icon">⌘</span><h2 data-i18n="gamingTitle">Gaming</h2></div><span class="panel-number mono">03 / RANK</span></div>
+          <div class="valorant-content"><div class="rank-mark" aria-hidden="true"><span class="rank-diamond"><i></i></span></div><div class="rank-copy"><span class="mono game-label">VALORANT / COMPETITIVE</span><strong>IMMORTAL <span>3</span></strong><small class="mono" data-i18n="rankBadge">VALORANT RANK</small></div><div class="rank-glow"></div></div>
+        </article>
+        <article class="panel social-panel scroll-reveal" id="links">
+          <div class="panel-heading"><div class="panel-name"><span class="line-icon">↗</span><h2 data-i18n="linksTitle">Find me online</h2></div><span class="panel-number mono">04 / SOCIALS</span></div>
+          <div class="social-grid">
+            <a href="https://www.youtube.com/@7dylanziin" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Visit 7Dylz on YouTube"><span class="social-icon youtube"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.5 7.2a2.75 2.75 0 0 0-1.93-1.94C17.85 4.8 12 4.8 12 4.8s-5.85 0-7.57.46A2.75 2.75 0 0 0 2.5 7.2 29.1 29.1 0 0 0 2.05 12c0 1.6.15 3.2.45 4.8.25.95.98 1.7 1.93 1.94 1.72.46 7.57.46 7.57.46s5.85 0 7.57-.46a2.75 2.75 0 0 0 1.93-1.94c.3-1.6.45-3.2.45-4.8s-.15-3.2-.45-4.8ZM10 15.53V8.47L16 12l-6 3.53Z"/></svg></span><span><b>YouTube</b><small>@7dylanziin</small></span><span class="social-arrow">↗</span></a>
+            <a href="https://discordapp.com/users/674956807554465834" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Visit 7Dylz's Discord profile"><span class="social-icon discord"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.3 5.5a19.3 19.3 0 0 0-4.7-1.5l-.6 1.2a18 18 0 0 0-6 0L8.4 4A19.3 19.3 0 0 0 3.7 5.5C.7 10 0 14.4.5 18.6a19.6 19.6 0 0 0 5.8 3l1.2-2c-.6-.2-1.2-.5-1.7-.8l.4-.3c3.4 1.6 7.9 1.6 11.3 0l.4.3-1.7.8 1.2 2a19.6 19.6 0 0 0 5.8-3c.6-4.8-1-9.2-3.9-13.1ZM8.2 15.8c-1.1 0-1.9-.9-1.9-2s.8-2 1.9-2 1.9.9 1.9 2-.8 2-1.9 2Zm7.6 0c-1.1 0-1.9-.9-1.9-2s.8-2 1.9-2 1.9.9 1.9 2-.8 2-1.9 2Z"/></svg></span><span><b>Discord</b><small>7Dylz / Profile</small></span><span class="social-arrow">↗</span></a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects" class="projects page-wrap scroll-reveal" aria-labelledby="projectsTitle">
+      <div class="section-topline"><span class="mono red">// PORTFOLIO</span><span class="mono section-index">05 — SELECTED VISUALS</span></div>
+      <div class="projects-heading"><div><h2 id="projectsTitle" data-i18n="projectsTitle">Featured visuals<span class="red">.</span></h2><p data-i18n="projectsDescription">Four original visual concepts made for the 7Dylz website.</p></div><div class="filter-row" role="group" aria-label="Filtrar galería"><button type="button" class="filter-chip selected" data-filter="all" data-i18n="filterAll">TODOS</button><button type="button" class="filter-chip" data-filter="gfx">GFX</button><button type="button" class="filter-chip" data-filter="vfx">VFX</button><button type="button" class="filter-chip" data-filter="3d">3D</button><button type="button" class="filter-chip" data-filter="unity">UNITY</button></div></div>
+      <p class="demo-note mono" data-i18n="demoNote">* Concept visuals generated for this website; these are not examples of previous commissions or completed 3D projects.</p>
+      <div class="project-grid" id="projectGrid">
+        <article class="project-card" data-project="1" role="button" tabindex="0" aria-haspopup="dialog" data-category="vfx"><img src="assets/project-1.webp" alt="Escena VFX conceptual: calle cyberpunk bajo la lluvia y luces rojas" loading="lazy" /><div class="project-info"><div><span class="project-kicker mono">VFX / EDITING</span><h3 data-i18n="project1">Neon Rain / VFX</h3></div><span class="project-indicator">↗</span></div><span class="mockup-tag mono" data-i18n="conceptTag">CONCEPTO</span></article>
+        <article class="project-card" data-project="2" role="button" tabindex="0" aria-haspopup="dialog" data-category="3d"><img src="assets/project-2.webp" alt="Render conceptual 3D: superdeportivo negro con luces rojas" loading="lazy" /><div class="project-info"><div><span class="project-kicker mono">3D / RENDER</span><h3 data-i18n="project2">Obsidian GT / 3D</h3></div><span class="project-indicator">↗</span></div><span class="mockup-tag mono" data-i18n="conceptTag">CONCEPTO</span></article>
+        <article class="project-card" data-project="3" role="button" tabindex="0" aria-haspopup="dialog" data-category="unity"><img src="assets/project-3.webp" alt="Entorno conceptual para Unity: torii japonés bajo una luna roja" loading="lazy" /><div class="project-info"><div><span class="project-kicker mono">UNITY / ENVIRONMENT</span><h3 data-i18n="project3">Crimson Shrine / Unity</h3></div><span class="project-indicator">↗</span></div><span class="mockup-tag mono" data-i18n="conceptTag">CONCEPTO</span></article>
+        <article class="project-card" data-project="4" role="button" tabindex="0" aria-haspopup="dialog" data-category="gfx"><img src="assets/project-4.webp" alt="Concepto GFX: composición metálica 7 y ojos de anime con brillo rojo" loading="lazy" /><div class="project-info"><div><span class="project-kicker mono">GFX / BRANDING</span><h3 data-i18n="project4">7Dylz Identity / GFX</h3></div><span class="project-indicator">↗</span></div><span class="mockup-tag mono" data-i18n="conceptTag">CONCEPTO</span></article>
+      </div>
+    </section>
+
+    <section class="terminal-section page-wrap scroll-reveal" aria-labelledby="terminalTitle"><div class="terminal-card"><div class="terminal-top"><span><span class="terminal-red-dot"></span> 7dylz@portfolio : ~/terminal</span><span class="mono">● ● ●</span></div><div class="terminal-output mono" id="terminalOutput" role="log" aria-live="polite"><p><span class="terminal-prompt">7dylz@web:~$</span> <span data-i18n="terminalIntro">Type help to see available commands.</span></p></div><form class="terminal-form mono" id="terminalForm" autocomplete="off"><label for="terminalInput" class="terminal-prompt">7dylz@web:~$</label><input id="terminalInput" type="text" aria-label="Terminal command" placeholder="help" maxlength="70" spellcheck="false" /><button type="submit" aria-label="Run command">↵</button></form><div class="terminal-hints mono"><span data-i18n="try">TRY:</span><button type="button" data-command="about">about</button><button type="button" data-command="skills">skills</button><button type="button" data-command="gaming">gaming</button><button type="button" data-command="help">help</button></div></div><div class="terminal-aside"><span class="mono red">// INTERACTIVE SPACE</span><h2 id="terminalTitle" data-i18n="terminalTitle">More than just a portfolio.</h2><p data-i18n="terminalDescription">This is my little corner of the internet. Explore the page, try the terminal, and get a glimpse of what I love to create.</p><div class="terminal-mini mono">&gt; creativity.exe <span class="red">RUNNING</span><br/>&gt; passion.log <span class="red">ACTIVE</span><br/>&gt; next_project <span class="red">LOADING_</span></div></div></section>
+
+    <div class="outro-wrap page-wrap"><div class="outro"><div class="outro-deco" aria-hidden="true">7</div><p class="mono">"TURNING IDEAS<br />INTO <span>REALITY.</span>"</p><div class="outro-tag mono">CREATIVE BY NATURE <i>//</i> 7DYLZ</div></div></div>
+  </main>
+
+
+  <!-- Portfolio viewer: concept work is labelled honestly as concept artwork. -->
+  <div class="project-modal" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="projectModalTitle" aria-hidden="true" hidden>
+    <div class="modal-overlay" data-close-modal="true"></div>
+    <div class="modal-panel" role="document">
+      <div class="modal-top mono"><span><span class="modal-dot">●</span> 7DYLZ // VISUAL STUDY</span><button class="modal-close" id="projectModalClose" type="button" aria-label="Cerrar proyecto">✕</button></div>
+      <div class="modal-image-wrap"><img id="projectModalImage" src="assets/project-1.webp" alt="" /></div>
+      <div class="modal-details"><div class="modal-tag mono" id="projectModalCategory">GFX</div><h2 id="projectModalTitle">Visual Study</h2><p id="projectModalDescription"></p><p class="modal-disclaimer" data-i18n="modalDisclaimer">Concepto visual generado para este sitio; no representa un encargo realizado ni un proyecto 3D terminado.</p><button id="projectModalNext" class="modal-next" type="button"><span data-i18n="nextProject">Siguiente concepto</span><span>↗</span></button></div>
+    </div>
+  </div>
+
+  <!-- User-initiated licensed embeds: no audio file shipped with the website. -->
+  <div class="music-dock" id="musicDock">
+
+    <div class="music-drawer" id="musicDrawer" hidden>
+      <div class="music-top mono"><span class="music-dot">●</span><span data-i18n="nowPlaying">ESCUCHAR AHORA</span><button type="button" id="musicClose" class="music-close" aria-label="Cerrar reproductor">✕</button></div>
+      <div class="music-song"><div class="music-cover" aria-hidden="true"><span>7</span><span>♫</span></div><div><strong>Cuando No Era Cantante (Remix)</strong><small>El Bogueto, Anuel AA, Fuerza Regida, Yung Beef</small></div></div>
+      <p class="music-help" data-i18n="musicHelp">Pulsa reproducir dentro de Spotify para escuchar. La reproducción depende de Spotify y de tu navegador.</p>
+      <div id="spotifyEmbed" class="spotify-embed"><div class="spotify-placeholder">SPOTIFY / PLAYER</div></div>
+      <div class="music-links"><a href="https://open.spotify.com/track/2pbSCYzxrG0wa6qcj8IyiE" target="_blank" rel="noopener noreferrer">Spotify ↗</a><a href="https://www.youtube.com/watch?v=NVLgkXylEuQ" target="_blank" rel="noopener noreferrer">YouTube oficial ↗</a></div>
+    </div>
+    <button class="music-launch mono" id="musicToggle" aria-expanded="false" aria-controls="musicDrawer" type="button" aria-label="Abrir reproductor de música"><span class="music-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span data-i18n="musicButton">♫ MÚSICA</span><span class="music-toggle-arrow">⌃</span></button>
+  </div>
+
+  <footer class="footer page-wrap"><a href="#home" class="footer-brand"><span>7</span>Dylz</a><span class="footer-middle mono">GFX / VFX / 3D / UNITY / GAMING / CODE</span><div class="footer-links"><a href="https://www.youtube.com/@7dylanziin" target="_blank" rel="noopener noreferrer">YOUTUBE ↗</a><a href="https://discordapp.com/users/674956807554465834" target="_blank" rel="noopener noreferrer">DISCORD ↗</a></div><div class="footer-bottom mono">© <span id="year"></span> 7DYLZ <span>DESIGNED WITH PASSION.</span></div></footer>
+</body>
+</html>
