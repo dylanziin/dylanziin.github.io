@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -28,25 +28,36 @@ jobs:
       - name: Descargar repositorio
         uses: actions/checkout@v4
 
-      - name: Extraer la pagina
+      - name: Extraer y verificar la pagina
         shell: bash
         run: |
           set -euo pipefail
-          test -f 7Dylz_Web_FINAL_LISTA_PARA_PUBLICAR.zip || { echo 'Falta subir el ZIP de 7Dylz'; exit 1; }
-          mkdir -p _build
+          test -f 7Dylz_Web_FINAL_LISTA_PARA_PUBLICAR.zip
+          mkdir -p _build _site
           unzip -q 7Dylz_Web_FINAL_LISTA_PARA_PUBLICAR.zip -d _build
-          mkdir -p _site
           cp -a _build/7Dylz_Web_FINAL_PUBLICABLE/. _site/
           test -s _site/index.html
           test -s _site/style.css
           test -s _site/script.js
           test -s _site/assets/killua-hero.webp
-          test -s _site/assets/project-1.webp
-          test -s _site/assets/project-2.webp
-          test -s _site/assets/project-3.webp
-          test -s _site/assets/project-4.webp
+          for i in 1 2 3 4; do
+            test -s "_site/assets/project-${i}.webp"
+          done
 
-      - name: Preparar Pages
+      - name: Copiar web a main para Pages desde rama
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp -a _site/. .
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html style.css script.js assets .nojekyll README_PUBLICACION.txt
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish 7Dylz static website"
+            git push origin HEAD:main
+          fi
+
+      - name: Preparar GitHub Pages
         uses: actions/configure-pages@v5
 
       - name: Subir pagina
@@ -54,6 +65,6 @@ jobs:
         with:
           path: _site
 
-      - name: Publicar en Pages
+      - name: Publicar con GitHub Actions
         id: deployment
         uses: actions/deploy-pages@v4
